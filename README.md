@@ -33,7 +33,7 @@ This submission covers everything required for the March 15 deadline:
 ---
 
 ## Milestone Progress
-*   **Milestone 1**: Project setup and initial PRD/Skills documentation.
+*   **Milestone 1**: Project setup and initial.
 *   **Milestone 2**: Created the Course entity and loaded the sample data.
 *   **Milestone 3**: Finished the controller setup and the validation logic for the forms.
 *   **Milestone 4**: Added pagination and the search/filter feature to the list view.
