@@ -1,26 +1,28 @@
-# Course Management System (CMS) - Deliverable 1
+# Course Management System (CMS) - Deliverables 1 & 2
 **Course:** Web Application Development - CPAN-228-RNA  
 **Team:** Nebil Ferej, Harry Joseph
 
 ## Project Breakdown
-This is the first deliverable for our Course Management System. For this phase, we focused on building the core application using Spring Boot, setting up the database connection, and creating the initial user interface with Thymeleaf and Bootstrap.
+This project is our Course Management System. For the first phase, we focused on building the core application using Spring Boot, setting up the database connection, and creating the initial user interface with Thymeleaf and Bootstrap. For the second phase, we added a complete security model so users can register, login, and access different parts of the site based on their role.
 
 ### Key Features
-*   **Database & JPA**: We're using Hibernate and Spring Data JPA to handle data. The `Course` entity stores course codes, names, credits, and departments. Every entry gets an automatic ID and a creation timestamp.
+*   **Database & JPA**: We're using Hibernate and Spring Data JPA to handle data. The `Course` entity stores course details, and the new `User` entity handles accounts. 
 *   **Web Interface**: Built with Thymeleaf and Bootstrap 5 so it works on mobile and desktop.
-    *   **Main List**: Shows all courses with support for sorting (click the headers) and filtering by department or credit count.
-    *   **Creation Form**: A simple form to add new courses. It has server-side validation, so if you miss a field or enter the wrong credit count, it shows a clear error message.
-*   **Seed Data**: We included a `data.sql` file that automatically loads a few sample courses when the app starts.
+*   **Security layer**: Passwords are encrypted using Bcrypt. 
+*   **Role Setup**: 
+    - Students can look at courses.
+    - Instructors can add new courses.
+    - Admins get access to a private dashboard to edit or delete stuff.
 
 ---
 
-## Deliverable 1 Requirements
-This submission covers everything required for the March 15 deadline:
+## Important Phase 2 Code Files
+To see how the security and roles were implemented, you can click directly on these main Java files:
 
-1.  **Navigation**: A working navbar that links to the Home page and two info pages (`Info 1` and `Info 2`). We used Thymeleaf fragments to keep the header and footer consistent across the site.
-2.  **Form Validation**: The add-course form checks that course codes are between 4-8 characters and credits are between 1-5.
-3.  **Persistence**: Form submissions are saved directly to the H2 database.
-4.  **List Controls**: The course table supports pagination and dynamic sorting handled on the server.
+*   [`SecurityConfig.java`](src/main/java/com/cpan228/cms/config/SecurityConfig.java) - Has all the route protections, the BCrypt bean, and login/logout rules.
+*   [`User.java`](src/main/java/com/cpan228/cms/model/User.java) - The user model that implements Spring's `UserDetails`.
+*   [`RegistrationController.java`](src/main/java/com/cpan228/cms/controller/RegistrationController.java) - Handles processing the sign-up form and saving new users securely.
+*   [`AdminController.java`](src/main/java/com/cpan228/cms/controller/AdminController.java) - Controls the `/admin` routes so only admins can modify or delete database entries.
 
 ---
 
@@ -32,16 +34,23 @@ This submission covers everything required for the March 15 deadline:
 
 ---
 
-## Milestone Progress
-*   **Milestone 1**: Project setup and initial.
-*   **Milestone 2**: Created the Course entity and loaded the sample data.
-*   **Milestone 3**: Finished the controller setup and the validation logic for the forms.
-*   **Milestone 4**: Added pagination and the search/filter feature to the list view.
-*   **Final**: Testing, tidying up the code, and adding these screenshots.
+## Phase 2 Scenarios
+
+### Registration 
+Users can create an account. For testing, we left a dropdown to select the role.
+![Registration Form](images/registration_page.png)
+
+### Login
+Styled to match the app, shows errors if you type the wrong password.
+![Login Page](images/login_page.png)
+
+### Admin Dashboard (Protected Route)
+Only visible if you login with an Admin account. Shows the edit and delete options for the database.
+![Admin Panel](images/admin_panel.png)
 
 ---
 
-## Application Screenshots
+## Phase 1 Screenshots
 
 ### Home Page
 ![Home Page](images/home_page.png)
@@ -57,8 +66,6 @@ This submission covers everything required for the March 15 deadline:
 
 ---
 
-
-
-## Demo Vedio
+## Demo Video
 
 https://youtu.be/tgHMiO67aQY
