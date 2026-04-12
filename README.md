@@ -164,8 +164,8 @@ JDBC URL: `jdbc:h2:mem:coursedb` — username: `sa` — no password needed
 
 | Team Member | Contributions |
 |-------------|--------------|
-| Harry Joseph | Spring Boot setup, JPA/database layer, security config, Docker integration, QA profile, admin dashboard |
-| Nebil Ferej | Thymeleaf templates, Bootstrap UI, registration flow, course listing and filtering, bug fixes |
+| Harry Joseph | Dockerfile setup, Docker Compose configuration, MySQL QA profile, Spring profile switching, Maven wrapper integration, MySQL connector dependency, updated README with Docker documentation, fresh screenshots, application stability improvements |
+| Nebil Ferej | Code review and testing of Docker setup, verified application flow across all roles, tested registration and login scenarios, reviewed README documentation for clarity, confirmed UI consistency across pages |
 
 ---
 
